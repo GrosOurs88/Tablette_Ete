@@ -1,0 +1,26 @@
+fileFormatVersion: 2
+guid: c54f95d53f5232f458f9b7e3e2abfbad
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - videoPlayer: {instanceID: 0}
+  - rawImage: {instanceID: 0}
+  - buttonClose: {instanceID: 0}
+  - video01: {instanceID: 0}
+  - video02: {instanceID: 0}
+  - canvasCode: {instanceID: 0}
+  - canvasTresor: {instanceID: 0}
+  - texture: {fileID: 2800000, guid: fb544df7d2a5d194dabb7530dcec4bc0, type: 3}
+  - codeInputField: {instanceID: 0}
+  - wrongOrderPopUp: {instanceID: 0}
+  - wrongCodePopUp: {instanceID: 0}
+  - remainingTry: {instanceID: 0}
+  - validateCodeButton: {instanceID: 0}
+  - video03: {instanceID: 0}
+  - video04: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

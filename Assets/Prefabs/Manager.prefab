@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4449277652656578265
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4449277652656578271}
+  - component: {fileID: 4449277652656578270}
+  m_Layer: 0
+  m_Name: Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4449277652656578271
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4449277652656578265}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4449277652656578270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4449277652656578265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c54f95d53f5232f458f9b7e3e2abfbad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectsToDisableAtStart:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  videoPlayer: {fileID: 0}
+  rawImage: {fileID: 0}
+  buttonClose: {fileID: 0}
+  VideoCorsairs: {fileID: 32900000, guid: db94d91407172e940a8dcacdd78c1e38, type: 3}
+  videoCaptainSelkirk: {fileID: 32900000, guid: 9a14bc54ec8e5af4ba3be1702b1c74d2,
+    type: 3}
+  canvasCode: {fileID: 0}
+  canvasTresor: {fileID: 0}
+  texture: {fileID: 2800000, guid: fb544df7d2a5d194dabb7530dcec4bc0, type: 3}
+  codeInputField: {fileID: 0}
+  code1: BLEU
+  code2: BLUE
+  wrongOrderPopUp: {fileID: 0}
+  wrongCodePopUp: {fileID: 0}
+  remainingTry: {fileID: 0}
+  validateCodeButton: {fileID: 0}
+  videoCodeFound: {fileID: 32900000, guid: 3fca10d974c3bd24f96affb037b9ea48, type: 3}
+  videoCodeNotFound: {fileID: 32900000, guid: 7feae4fbf77eded46a3a2f6dbcd23fee, type: 3}
+  panelMap: {fileID: 0}
+  videoChestFound: {fileID: 32900000, guid: 65a8df66a4c286047bd3c3a73ad12161, type: 3}
+  videoChestNotFound: {fileID: 32900000, guid: 358f3ce3c4568c04e969684ac2c5bdc9, type: 3}
+  chestValidationPanel: {fileID: 0}
+  textOuEstLeTresor: {fileID: 0}
+  ButtonSelected: {fileID: 0}
