@@ -24,9 +24,11 @@ public class ManagerScript : MonoBehaviour
     public VideoClip videoCaptainSelkirk;
     public Canvas canvasCode;
     public Canvas canvasTresor;
+    public Canvas canvasConstellation;
     public Texture texture;
     private bool isCodeCanvasActive = false;
     private bool isChestCanvasActive = false;
+    private bool isConstellationCanvasActive = false;
 
     [Header("***Code***")]
     public TMP_InputField codeInputField;
@@ -54,6 +56,10 @@ public class ManagerScript : MonoBehaviour
     private bool isTheChestOnTheLastCaseChecked;
     [HideInInspector]
     public GameObject ButtonSelected;
+
+    [Header("***Constellation***")]
+    public VideoClip videoConstellationFound;
+    public VideoClip videoConstellationNotFound;
 
     private void Awake()
     {
@@ -185,6 +191,12 @@ public class ManagerScript : MonoBehaviour
         isChestCanvasActive = true;
     }
 
+    public void ActiveCanvasConstellation()
+    {
+        EnableCanvas(canvasConstellation);
+        isConstellationCanvasActive = true;
+    }
+
     public void DeactiveCanvasCode()
     {
         codeInputField.text = "";
@@ -209,6 +221,11 @@ public class ManagerScript : MonoBehaviour
         textOuEstLeTresor.gameObject.SetActive(true);
 
         DisableCanvas(canvasTresor);
+    }
+
+    public void DeactiveCanvasConstellation()
+    {
+        DisableCanvas(canvasConstellation);
     }
 
     public void ActivateKeyboard()
