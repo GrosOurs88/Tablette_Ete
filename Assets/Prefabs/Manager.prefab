@@ -51,21 +51,24 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
   videoPlayer: {fileID: 0}
   rawImage: {fileID: 0}
   buttonClose: {fileID: 0}
   VideoCorsairs: {fileID: 32900000, guid: db94d91407172e940a8dcacdd78c1e38, type: 3}
   videoCaptainSelkirk: {fileID: 32900000, guid: 9a14bc54ec8e5af4ba3be1702b1c74d2,
     type: 3}
+  videoConstellation: {fileID: 32900000, guid: e4a63674bf4d94449ba18259a39ab170, type: 3}
   canvasCode: {fileID: 0}
   canvasTresor: {fileID: 0}
+  canvasConstellation: {fileID: 0}
   texture: {fileID: 2800000, guid: fb544df7d2a5d194dabb7530dcec4bc0, type: 3}
   codeInputField: {fileID: 0}
   code1: BLEU
   code2: BLUE
   wrongOrderPopUp: {fileID: 0}
   wrongCodePopUp: {fileID: 0}
-  remainingTry: {fileID: 0}
+  remainingCodeTry: {fileID: 0}
   validateCodeButton: {fileID: 0}
   videoCodeFound: {fileID: 32900000, guid: 3fca10d974c3bd24f96affb037b9ea48, type: 3}
   videoCodeNotFound: {fileID: 32900000, guid: 7feae4fbf77eded46a3a2f6dbcd23fee, type: 3}
@@ -75,3 +78,16 @@ MonoBehaviour:
   chestValidationPanel: {fileID: 0}
   textOuEstLeTresor: {fileID: 0}
   ButtonSelected: {fileID: 0}
+  videoConstellationFound: {fileID: 32900000, guid: 031973c0519e5064ba4aa39047d75876,
+    type: 3}
+  videoConstellationNotFound: {fileID: 32900000, guid: b2bbfaab4c44cb942b9e89d4e7a4f2fe,
+    type: 3}
+  wrongConstellationPopUp: {fileID: 0}
+  remainingConstellationTry: {fileID: 0}
+  starsCombinationsToReproduce: []
+  starsCombinations: []
+  links: []
+  firstStarSelected: {fileID: 0}
+  secondStarSelected: {fileID: 0}
+  starLinkPrefab: {fileID: 1404480731366042740, guid: 8f3e025826f20254da9eb8817c00be5a,
+    type: 3}

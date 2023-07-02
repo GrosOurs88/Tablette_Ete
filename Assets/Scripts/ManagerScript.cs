@@ -18,10 +18,12 @@ public class ManagerScript : MonoBehaviour
 
     [Header("***Main***")]
     public VideoPlayer videoPlayer;
+    public Image blackScreen;
     public RawImage rawImage;
     public Button buttonClose;
     public VideoClip VideoCorsairs;
     public VideoClip videoCaptainSelkirk;
+    public VideoClip videoConstellation;
     public Canvas canvasCode;
     public Canvas canvasTresor;
     public Canvas canvasConstellation;
@@ -41,7 +43,7 @@ public class ManagerScript : MonoBehaviour
     public GameObject wrongOrderPopUp;
     public GameObject wrongCodePopUp;
     private int codeTryNumber = 5;
-    public TextMeshProUGUI remainingTry;
+    public TextMeshProUGUI remainingCodeTry;
     public Button validateCodeButton;
     public VideoClip videoCodeFound;
     public VideoClip videoCodeNotFound;
@@ -60,6 +62,17 @@ public class ManagerScript : MonoBehaviour
     [Header("***Constellation***")]
     public VideoClip videoConstellationFound;
     public VideoClip videoConstellationNotFound;
+    public GameObject wrongConstellationPopUp;
+    private int constellationTryNumber = 5;
+    public TextMeshProUGUI remainingConstellationTry;
+    [Tooltip("Toujours mettre le chiffre le plus petit à gauche")]
+    public List<string> starsCombinationsToReproduce = new List<string>();
+    public List<string> starsCombinations = new List<string>(); //private
+    public List<GameObject> links = new List<GameObject>(); //private
+    public GameObject firstStarSelected = null; //[HideInInspector] 
+    public GameObject secondStarSelected = null; //[HideInInspector] 
+    public GameObject starLinkPrefab;
+    public GameObject starLinksParentFolder;
 
     private void Awake()
     {
@@ -68,7 +81,7 @@ public class ManagerScript : MonoBehaviour
 
     private void Start()
     {
-        foreach(Transform tr in panelMap.transform)
+        foreach (Transform tr in panelMap.transform)
         {
             foreach(Transform trChild in tr.transform)
             {
@@ -138,6 +151,11 @@ public class ManagerScript : MonoBehaviour
         StartCoroutine(VideoStart(videoCaptainSelkirk));
     }
 
+    public void LaunchVideoConstellation()
+    {
+        StartCoroutine(VideoStart(videoConstellation));
+    }
+
     public void LaunchVideoCodeFound()
     {
         StartCoroutine(VideoStart(videoCodeFound));
@@ -156,6 +174,16 @@ public class ManagerScript : MonoBehaviour
     public void LaunchVideoChestNotFound()
     {
         StartCoroutine(VideoStart(videoChestNotFound));
+    }
+
+    public void LaunchVideoConstellationNotFound()
+    {
+        StartCoroutine(VideoStart(videoConstellationNotFound));
+    }
+
+    public void LaunchVideoConstellationFound()
+    {
+        StartCoroutine(VideoStart(videoConstellationFound));
     }
 
     public void StopVideo()
@@ -177,6 +205,14 @@ public class ManagerScript : MonoBehaviour
             DeactiveCanvasTresor();
             isChestCanvasActive = false;
         }
+
+        if (isConstellationCanvasActive == true)
+        {
+            DeactiveCanvasConstellation();
+            isConstellationCanvasActive = false;
+        }
+
+        blackScreen.gameObject.SetActive(false);
     }
 
     public void ActiveCanvasCode()
@@ -388,7 +424,7 @@ public class ManagerScript : MonoBehaviour
             LaunchVideoCodeFound();
             codeInputField.text = "";
             codeTryNumber = 5;
-            remainingTry.text = codeTryNumber.ToString();
+            remainingCodeTry.text = codeTryNumber.ToString();
         }
 
         else if(CompareLists(charListCodeInputField, charListCode1) || CompareLists(charListCodeInputField, charListCode2))
@@ -403,13 +439,158 @@ public class ManagerScript : MonoBehaviour
             codeTryNumber--;
         }
 
-        remainingTry.text = codeTryNumber.ToString();
+        remainingCodeTry.text = codeTryNumber.ToString();
 
         if(codeTryNumber == 0)
         {
             LaunchVideoCodeNotFound();
             codeTryNumber = 5;
-            remainingTry.text = codeTryNumber.ToString();
+            remainingCodeTry.text = codeTryNumber.ToString();
+        }
+    }
+
+    public void SelectFirstStar(GameObject _starSelected)
+    {
+        firstStarSelected = _starSelected;
+    }
+
+    public void SelectSecondStar(GameObject _starSelected)
+    {
+        secondStarSelected = _starSelected;
+    }
+
+    public void ResetFirstStar()
+    {
+        firstStarSelected = null;
+    }
+
+    public void MatchStars()
+    {
+        string newCombination = "";
+
+        if(firstStarSelected.GetComponent<ButtonStarScript>().starIndex < secondStarSelected.GetComponent<ButtonStarScript>().starIndex)
+        {
+            newCombination = firstStarSelected.GetComponent<ButtonStarScript>().starIndex.ToString() + "-" + secondStarSelected.GetComponent<ButtonStarScript>().starIndex.ToString();
+        }
+        else
+        {
+            newCombination = secondStarSelected.GetComponent<ButtonStarScript>().starIndex.ToString() + "-" + firstStarSelected.GetComponent<ButtonStarScript>().starIndex.ToString();
+        }
+
+        if(starsCombinations.Contains(newCombination))
+        {
+            starsCombinations.Remove(newCombination);
+            RemoveStarsLink(newCombination);
+        }
+        else
+        {
+            starsCombinations.Add(newCombination);
+            AddStarsLink();
+        }
+
+        firstStarSelected.GetComponent<ButtonStarScript>().ResetStar();
+        secondStarSelected.GetComponent<ButtonStarScript>().ResetStar();
+
+        firstStarSelected = null;
+        secondStarSelected = null;
+    }
+
+    public void AddStarsLink() //---------------------------------
+    {
+        GameObject link = Instantiate(starLinkPrefab, starLinksParentFolder.transform);
+
+        Vector3 startPos = firstStarSelected.transform.TransformPoint(firstStarSelected.GetComponent<RectTransform>().rect.center);
+        Vector3 endPos = secondStarSelected.transform.TransformPoint(firstStarSelected.GetComponent<RectTransform>().rect.center);
+
+        Vector3 startPosModified = new Vector3(startPos.x, startPos.y, startPos.z+0.5f);
+        Vector3 endPosModified = new Vector3(endPos.x, endPos.y, endPos.z + 0.5f);
+
+        link.GetComponent<LineRenderer>().SetPosition(0, startPosModified);
+        link.GetComponent<LineRenderer>().SetPosition(1, endPosModified);
+
+        if(firstStarSelected.GetComponent<ButtonStarScript>().starIndex < secondStarSelected.GetComponent<ButtonStarScript>().starIndex)
+        {
+            link.GetComponent<StarLinkScript>().linkIndexes = firstStarSelected.GetComponent<ButtonStarScript>().starIndex.ToString() + "-" + secondStarSelected.GetComponent<ButtonStarScript>().starIndex.ToString();
+        }
+        else
+        {
+            link.GetComponent<StarLinkScript>().linkIndexes = secondStarSelected.GetComponent<ButtonStarScript>().starIndex.ToString() + "-" + firstStarSelected.GetComponent<ButtonStarScript>().starIndex.ToString();
+        }
+
+        links.Add(link);
+    }
+
+    public void RemoveStarsLink(string _name)
+    {
+        for (int i=0; i<links.Count; i++)
+        {
+            if(links[i].GetComponent<StarLinkScript>().linkIndexes == _name)
+            {
+                Destroy(links[i]);
+                links.RemoveAt(i);
+            }
+        }
+    }
+
+    public void ResetConstellation()
+    {
+        foreach(GameObject gO in links)
+        {
+            Destroy(gO);
+        }
+        links.Clear();
+
+        starsCombinations.Clear();
+    }
+
+    public void CheckConstellation()
+    {
+        int goodIndexes = 0;
+
+        if (starsCombinations.Count == starsCombinationsToReproduce.Count)
+        {
+            foreach (string s in starsCombinations)
+            {
+                if (starsCombinationsToReproduce.Contains(s))
+                {
+                    goodIndexes += 1;
+
+                    codeTryNumber = 5;
+                    remainingConstellationTry.text = codeTryNumber.ToString();
+                }
+            }
+
+            if(goodIndexes == starsCombinationsToReproduce.Count)
+            {
+                LaunchVideoConstellationFound();
+
+                ResetConstellation();
+                constellationTryNumber = 5;
+                canvasConstellation.gameObject.SetActive(false);
+            }
+
+            else
+            {
+                StartCoroutine(WrongConstellationPopUp());
+                constellationTryNumber--;
+            }
+        }
+
+        else
+        {
+            StartCoroutine(WrongConstellationPopUp());
+            constellationTryNumber--;
+        }
+
+        remainingConstellationTry.text = constellationTryNumber.ToString();
+
+        if (constellationTryNumber == 0)
+        {
+            LaunchVideoConstellationNotFound();
+            constellationTryNumber = 5;
+            remainingConstellationTry.text = constellationTryNumber.ToString();
+
+            canvasConstellation.gameObject.SetActive(false);
         }
     }
 
@@ -420,6 +601,8 @@ public class ManagerScript : MonoBehaviour
 
     IEnumerator VideoStart(VideoClip _clip)
     {
+        blackScreen.gameObject.SetActive(true);
+
         videoPlayer.clip = _clip;
 
         DebugVisualReset();
@@ -453,5 +636,14 @@ public class ManagerScript : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         wrongCodePopUp.gameObject.SetActive(false);
+    }
+
+    IEnumerator WrongConstellationPopUp()
+    {
+        wrongConstellationPopUp.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(2f);
+
+        wrongConstellationPopUp.gameObject.SetActive(false);
     }
 }
