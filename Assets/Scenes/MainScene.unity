@@ -392,7 +392,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2a03840ce28de574795d02e3995e718c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f465c99ba5dfdf74f9e29edc1bbb2ad4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -734,7 +734,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Le tr\xE9sor du Capitaine Selkirk\n"
+  m_text: "Le tr\xE9sor du\nCapitaine Selkirk\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc26b37c17702df43997a511ff9427e2, type: 2}
   m_sharedMaterial: {fileID: -2426126757121422895, guid: dc26b37c17702df43997a511ff9427e2,
@@ -1549,7 +1549,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: dfc0340f6c5f04342be95e059bc9761f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5d725a182e5fd01409ece9c90bd89124, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7192,7 +7192,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Name
+  m_text: 'Un rempart
+
+    contre le temps'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc26b37c17702df43997a511ff9427e2, type: 2}
   m_sharedMaterial: {fileID: -2426126757121422895, guid: dc26b37c17702df43997a511ff9427e2,
@@ -10734,7 +10736,7 @@ GameObject:
   - component: {fileID: 925380838}
   - component: {fileID: 925380837}
   m_Layer: 5
-  m_Name: Panel_NewName_Video
+  m_Name: Panel_UnRempartContreLeTemps_Video
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12293,7 +12295,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 772dfe1e625b7594eb1f1ef40bb8f7bf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: aa29f76d94102094f8f59ae09563e710, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13356,7 +13358,7 @@ GameObject:
   - component: {fileID: 1226561564}
   - component: {fileID: 1226561563}
   m_Layer: 5
-  m_Name: Panel_NewName_Title
+  m_Name: Panel_UnRempartContreLeTemps_Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15359,7 +15361,7 @@ GameObject:
   - component: {fileID: 1453633654}
   - component: {fileID: 1453633653}
   m_Layer: 5
-  m_Name: Button_NewName_DessinerLaConstellation
+  m_Name: Button_UnRempartContreLeTemps_DessinerLaConstellation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16088,7 +16090,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Sur la piste des Corsaires
+  m_text: 'Sur la piste
+
+    des Corsaires'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc26b37c17702df43997a511ff9427e2, type: 2}
   m_sharedMaterial: {fileID: -2426126757121422895, guid: dc26b37c17702df43997a511ff9427e2,
